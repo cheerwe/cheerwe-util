@@ -144,4 +144,72 @@ var Util = {
     }
 };
 
+
+
+/**@desc 日期相关操作的封装
+ */
+var DateUtil = {
+    parse: function(str) {
+        var date = null;
+        try {
+            date = new Date(str);
+        } catch (e) {
+            date = null;
+        }
+        return date;
+    },
+    format: function(date, format) {
+        if (!date) {
+            return '';
+        }
+        if (typeof(date) == 'string') {
+            date = new Date(date);
+        } else if (typeof(date) == 'object') {
+            if (!(date instanceof Date)) {
+                return '';
+            }
+        }
+        format = format || 'yyyy-MM-dd HH:mm:ss';
+        var o = {
+            "M+": date.getMonth() + 1, //month
+            "d+": date.getDate(), //day
+            "h+": date.getHours(), //hour
+            "H+": date.getHours(), //hour
+            "m+": date.getMinutes(), //minute
+            "s+": date.getSeconds(), //second
+            "q+": Math.floor((date.getMonth() + 3) / 3), //quarter
+            "S": date.getMilliseconds() //millisecond
+        }
+
+        if (/(y+)/.test(format)) {
+            format = format.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+        }
+
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+            }
+        }
+        return format;
+    },
+    addDay: function(date, day) {
+        return DateUtil.addHour(date, 24);
+    },
+    addHour: function(date, hour) {
+        return DateUtil.addMinute(date, hour * 60);
+    },
+    addMinute: function(date, minute) {
+        return DateUtil.addSecond(date, minute * 60);
+    },
+    addSecond: function(date, second) {
+        return DateUtil.addTime(date, second * 1000);
+    },
+    addTime: function(date, addTime) {
+        var time = date.getTime() + addTime;
+        date.setTime(time);
+        return date;
+    }
+};
+Util.Date = DateUtil;
+
 module.exports = Util;
