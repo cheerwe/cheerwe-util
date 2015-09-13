@@ -229,9 +229,9 @@ var DateUtil = {
             unit = 1000;
         } else if (type == 'm') {
             unit = 1000 * 60;
-        } else if (type = 'H') {
+        } else if (type == 'H') {
             unit = 1000 * 60 * 60
-        } else if (type = 'd') {
+        } else if (type == 'd') {
             unit = 1000 * 60 * 60 * 24;
         }
 
