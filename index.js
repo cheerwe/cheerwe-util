@@ -208,6 +208,37 @@ var DateUtil = {
         var time = date.getTime() + addTime;
         date.setTime(time);
         return date;
+    },
+    /**
+     * 日期相减
+     * @param  {String} dayStart [description]
+     * @param  {String} dayEnd   [description]
+     * @param  {String} type     支持ms:毫秒,s:秒,m:分,H:时,d:天
+     * @return {Int}          [description]
+     */
+    subDate: function(dayStart, dayEnd, type) {
+        dayStart = new Date(dayStart);
+        dayEnd = new Date(dayEnd);
+
+        var ms = dayStart - dayEnd;
+        var unit = 0;
+
+        if (type == 'ms') {
+            unit = 1;
+        } else if (type == 's') {
+            unit = 1000;
+        } else if (type == 'm') {
+            unit = 1000 * 60;
+        } else if (type = 'H') {
+            unit = 1000 * 60 * 60
+        } else if (type = 'd') {
+            unit = 1000 * 60 * 60 * 24;
+        }
+
+        if (unit) {
+            return ms / unit;
+        }
+        return 0;
     }
 };
 Util.Date = DateUtil;
