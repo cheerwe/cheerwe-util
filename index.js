@@ -141,6 +141,24 @@ var Util = {
         var _encrymd5 = require('crypto').createHash('md5');
         _encrymd5.update(data);
         return _encrymd5.digest('hex');
+    },
+    /**
+     * 将list转换成Map
+     * @param  {[type]} list     List数据
+     * @param  {[type]} keyField Map的keyfield
+     * @return {[type]}          [description]
+     */
+    map: function(list, keyField) {
+        if (!Util.isArray(list)) {
+            return null;
+        }
+        var map = {};
+        for (var i = 0, len = list.lenght; i < len; i++) {
+            var item = list[i];
+            var key = item[keyField];
+            map[key] = item;
+        }
+        return map;
     }
 };
 
@@ -239,24 +257,6 @@ var DateUtil = {
             return ms / unit;
         }
         return 0;
-    },
-    /**
-     * 将list转换成Map
-     * @param  {[type]} list     List数据
-     * @param  {[type]} keyField Map的keyfield
-     * @return {[type]}          [description]
-     */
-    map: function(list, keyField) {
-        if (!Util.isArray(list)) {
-            return null;
-        }
-        var map = {};
-        for (var i = 0, len = list.lenght; i < len; i++) {
-            var item = list[i];
-            var key = item[keyField];
-            map[key] = item;
-        }
-        return map;
     }
 };
 Util.Date = DateUtil;
