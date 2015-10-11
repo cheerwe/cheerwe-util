@@ -153,7 +153,7 @@ var Util = {
             return null;
         }
         var map = {};
-        for (var i = 0, len = list.lenght; i < len; i++) {
+        for (var i = 0, len = list.length; i < len; i++) {
             var item = list[i];
             var key = item[keyField];
             map[key] = item;
