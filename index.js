@@ -269,12 +269,11 @@ var DateUtil = {
         return mm.max;
     },
     mmDate: function() {
-        var list = [].concat(arguments);
         var min = null;
         var max = null;
 
-        for (var i = 0, len = list.length; i < len; i++) {
-            var item = list[i];
+        for (var i = 0, len = arguments.length; i < len; i++) {
+            var item = arguments[i];
             item = new Date(item);
 
             if (min) {
