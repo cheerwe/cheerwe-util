@@ -257,6 +257,43 @@ var DateUtil = {
             return ms / unit;
         }
         return 0;
+    },
+    minDate: function() {
+        var mm = this.mmDate.apply(this, arugments);
+
+        return mm.min;
+    },
+    maxDate: function() {
+        var mm = this.mmDate.apply(this, arugments);
+
+        return mm.max;
+    },
+    mmDate: function() {
+        var list = [].concat(arguments);
+        var min = null;
+        var max = null;
+
+        for (var i = 0, len = list.length; i < len; i++) {
+            var item = list[i];
+            item = new Date(item);
+
+            if (min) {
+                min = min > item ? item : min;
+            } else {
+                min = item;
+            }
+
+            if (max) {
+                max = max < item ? item : max;
+            } else {
+                max = item;
+            }
+        }
+
+        return {
+            min: min,
+            max: max
+        }
     }
 };
 Util.Date = DateUtil;

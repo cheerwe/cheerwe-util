@@ -21,3 +21,9 @@
 ### 1.4.1
 日期：2015-09-11
 描述：bugfix
+
+
+
+### 1.5.0
+日期：2015-09-12
+描述：DataUtil新增方法mmDate,minDate,maxDate
