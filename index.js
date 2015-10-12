@@ -259,12 +259,12 @@ var DateUtil = {
         return 0;
     },
     minDate: function() {
-        var mm = this.mmDate.apply(this, arugments);
+        var mm = this.mmDate.apply(this, arguments);
 
         return mm.min;
     },
     maxDate: function() {
-        var mm = this.mmDate.apply(this, arugments);
+        var mm = this.mmDate.apply(this, arguments);
 
         return mm.max;
     },

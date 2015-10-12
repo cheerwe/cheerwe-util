@@ -1,6 +1,6 @@
 {
     "name": "cheerwe-util",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "main": "index.js",
     "description": "some util help in common",
     "homepage": "https://github.com/cheerwe/cheerwe-util/",
